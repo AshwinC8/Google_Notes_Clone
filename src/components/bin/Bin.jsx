@@ -30,8 +30,8 @@ const Bin = ({ deleteNote }) => {
     return (
         <StyledCard>
             <CardContent>
-                <Typography>{deleteNote.heading}</Typography>
-                <Typography>{deleteNote.text}</Typography>
+                <Typography style={{fontSize:'1rem', fontWeight:900}}>{deleteNote.title}</Typography>
+                <Typography style={{fontSize:'15px'}}>{deleteNote.text}</Typography>
             </CardContent>
             <CardActions>
                 <Delete

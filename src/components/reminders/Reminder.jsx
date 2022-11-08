@@ -32,8 +32,8 @@ const Reminder = ({ reminder }) => {
     return (
         <StyledCard>
             <CardContent>
-                <Typography>{reminder.heading}</Typography>
-                <Typography>{reminder.text}</Typography>
+                <Typography style={{fontSize:'1rem', fontWeight:900}}>{reminder.title}</Typography>
+                <Typography style={{fontSize:'15px'}}>{reminder.text}</Typography>
             </CardContent>
             <CardActions>
                 <NotificationsNoneOutlinedIcon

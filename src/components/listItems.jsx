@@ -3,13 +3,13 @@ import { List, ListItemButton, ListItemIcon, ListItemText, ListItem} from '@mui/
 import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
-
+import { Link } from 'react-router-dom';
 
 const ListItems = () => {
     const navList = [
-        { id: 1, name: 'Notes', icon: <LightbulbOutlinedIcon />},
-        { id: 2, name: 'Reminders', icon:  <NotificationsNoneOutlinedIcon /> },
-        { id: 3, name: 'Bin', icon: <DeleteOutlinedIcon /> },
+        { id: 1, name: 'Notes', icon: <LightbulbOutlinedIcon />, route: '/'},
+        { id: 2, name: 'Reminders', icon:  <NotificationsNoneOutlinedIcon />, route: '/reminder' },
+        { id: 3, name: 'Bin', icon: <DeleteOutlinedIcon />, route: '/bin' },
     ]
 
     return (
@@ -18,10 +18,12 @@ const ListItems = () => {
                     navList.map( list => (
                         <ListItem key={list.id} disablePadding sx={{display: 'block'}}>
                             <ListItemButton sx={{minHeight: 48, justifyContent: open ? 'initial' : 'center', px: 2.5}}>
-                                <ListItemIcon sx={{minWidth: 0, mr: open ? 3 : 'auto', justifyContent: 'center'}}>
-                                    {list.icon}
-                                </ListItemIcon>
-                                <ListItemText primary={list.name} sx={{opacity: open ? 1 : 0}}/>
+                                <List to={`${list.route}`} style={{ textDecoration: 'none', display: 'flex', color: 'inherit'}}>
+                                    <ListItemIcon sx={{minWidth: 0, mr: open ? 3 : 'auto', justifyContent: 'center'}}>
+                                        {list.icon}
+                                    </ListItemIcon>
+                                    <ListItemText primary={list.name} sx={{opacity: open ? 1 : 0}}/>
+                                </List>
                             </ListItemButton>
                         </ListItem>
                     ))
