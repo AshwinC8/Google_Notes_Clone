@@ -1,30 +1,45 @@
 # Google_Notes_Clone
 
 ## Demo link:
-Access my site at [google.com](https://google.com)
+Access my site at 
+``` 
+```
 
 ## Table of Content:
-
 - [About The App](#about-the-app)
 - [Screenshots](#screenshots)
 - [Technologies](#technologies)
 - [Setup](#setup)
-- [Approach](#approach)
 - [Status](#status)
 
 ## About The App
-[Google_Notes_Clone] A clone of Google keep notes.
+A clone of Google keep notes.
 
 ## Screenshots
+```
+
+```
+
 
 ## Technologies
-I used the React, and MUI libraries to create the frontend.
+Used the React, and MUI libraries to create the frontend.
 
 ## Setup
-- download or clone the repository
-- run `npm install`
--`cd Google_Notes_Clone`
--`npm run dev`
+- To get a local copy of the code, clone it using git :
+```
+git clone https://github.com/AshwinC8/Google_Notes_Clone.git
+cd Google_Notes_Clone
+```
+
+- Install Dependencies
+```
+npm install
+```
+
+- Now, you can start a local web server by running :
+```
+npm run dev
+```
 
 ## Status
-[name of project] is still in progress.
+Development is still in progress.
