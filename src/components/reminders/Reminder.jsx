@@ -17,9 +17,9 @@ const Reminder = ({ reminder }) => {
 
     const { reminders, setNotes, setReminders, setBin } = useContext(DataContext);
 
-    const unReminderNote = (reminder) => {
+    const unRemindNote = (reminder) => {
         const updatedNotes = reminders.filter(data => data.id !== reminder.id);
-        reminders(updatedNotes);
+        setReminders(updatedNotes);
         setNotes(prevArr => [reminder, ...prevArr]);
     }
 
@@ -39,7 +39,7 @@ const Reminder = ({ reminder }) => {
                 <NotificationsNoneOutlinedIcon
                     fontSize="small"
                     style={{ marginLeft: 'auto' }}
-                    onClick={() => unReminderNote(reminder)}
+                    onClick={() => unRemindNote(reminder)}
                 />
                 <DeleteOutlinedIcon
                     fontSize="small"

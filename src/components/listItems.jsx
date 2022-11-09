@@ -16,14 +16,14 @@ const ListItems = () => {
             <List>
                 {
                     navList.map( list => (
-                        <ListItem key={list.id} disablePadding sx={{display: 'block'}}>
+                        <ListItem key={list.id} disablePadding sx={{display: 'flex' , marginTop: '10px'}}>
                             <ListItemButton sx={{minHeight: 48, justifyContent: open ? 'initial' : 'center', px: 2.5}}>
-                                <List to={`${list.route}`} style={{ textDecoration: 'none', display: 'flex', color: 'inherit'}}>
-                                    <ListItemIcon sx={{minWidth: 0, mr: open ? 3 : 'auto', justifyContent: 'center'}}>
+                                <Link to={`${list.route}`} style={{ textDecoration: 'none', display: 'flex', color: 'inherit'}}>
+                                    <ListItemIcon sx={{minWidth: 0, mr: open ? 3 : 'auto', justifyContent: 'center', alignItems: 'center'}}>
                                         {list.icon}
                                     </ListItemIcon>
                                     <ListItemText primary={list.name} sx={{opacity: open ? 1 : 0}}/>
-                                </List>
+                                </Link>
                             </ListItemButton>
                         </ListItem>
                     ))

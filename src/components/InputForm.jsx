@@ -65,7 +65,7 @@ const InputForm = () => {
                 }
                 <TextField
                     placeholder="Take a note..."
-                    multiline='true'
+                    multiline={true}
                     variant="standard"
                     onClick={onTextArea}
                     InputProps={{ disableUnderline : true }}

@@ -19,7 +19,7 @@ const Reminders = () => {
                 <Grid container>
                     {
                         reminders.map(reminder => (
-                            <Grid item>
+                            <Grid item key={reminder.id}>
                                 <Reminder reminder={reminder} />
                             </Grid>
                         ))

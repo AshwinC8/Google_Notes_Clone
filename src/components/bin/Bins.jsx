@@ -19,7 +19,7 @@ const Bins = () => {
                 <Grid container>
                     {
                         bin.map(deleteNote => (
-                            <Grid item>
+                            <Grid item key={deleteNote.id}>
                                 <Bin deleteNote={deleteNote} />
                             </Grid>
                         ))
