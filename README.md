@@ -1,9 +1,8 @@
 # Google_Notes_Clone
 
 ## Demo link:
-Access my site at 
-``` 
-```
+Access to site
+https://ashwinc8.github.io/Google_Notes_Clone/
 
 ## Table of Content:
 - [About The App](#about-the-app)
