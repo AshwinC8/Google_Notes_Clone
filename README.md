@@ -21,7 +21,7 @@ A clone of Google keep notes.
 
 
 ## Technologies
-Used the React, and MUI libraries to create the frontend.
+Used the React, and MUI library to create the frontend.
 
 ## Setup
 - To get a local copy of the code, clone it using git :
