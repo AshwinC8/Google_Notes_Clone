@@ -178,7 +178,7 @@ Error generating stack: `+i.message+`
     border-radius : 8px;
     border-color : #e0e0e0e; 
 `,cg={id:"",title:"",text:""},QN=()=>{const[e,t]=x.exports.useState(!1),[n,r]=x.exports.useState({...cg,id:ug()}),{notes:o,setNotes:i}=x.exports.useContext(gr),a=x.exports.useRef(),l=()=>{t(!0),a.current.style.minHeight="70px"},s=()=>{t(!1),a.current.style.minHeight="30px",r({...cg,id:ug()}),(n.heading||n.text)&&i(c=>[n,...c])},u=c=>{let d={...n,[c.target.name]:c.target.value};r(d)};return I(OI,{onClickAway:s,children:Z(XN,{ref:a,children:[e&&I(Xv,{placeholder:"Title",variant:"standard",InputProps:{disableUnderline:!0},style:{marginBottom:10},onChange:c=>u(c),name:"title",value:n.title}),I(Xv,{placeholder:"Take a note...",multiline:!0,variant:"standard",onClick:l,InputProps:{disableUnderline:!0},onChange:c=>u(c),name:"text",value:n.text})]})})},JN=W(Zp)`
-    width: 240px;
+    width: 615px;
     margin: 8px;
     box-shadow: none;
     border: 1px solid #e0e0e0;
