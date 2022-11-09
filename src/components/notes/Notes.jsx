@@ -37,7 +37,7 @@ const Notes = () => {
                 <InputForm/>
                     { notes.length != 0 ?
                         <DragDropContext onDragEnd={onDragEnd}>
-                            <Droppable droppableId="droppable">
+                            <Droppable droppableId="droppable" >
                                 {(provided, snapshot) => (
                                     <Grid container
                                           {...provided.droppableProps}
@@ -55,7 +55,8 @@ const Notes = () => {
                                                                   {...provided.draggableProps}
                                                                   {...provided.dragHandleProps}
                                                                   item
-                                                                  key={note.id}>
+                                                                  key={note.id}
+                                                                  >
                                                                 <Note
                                                                     note={note}
                                                                 />

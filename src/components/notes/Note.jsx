@@ -6,7 +6,7 @@ import {DataContext} from "../context/DataProvider.jsx";
 import {useContext} from "react";
 
 const StyledCard = styled(Card)`
-    width: 240px;
+    width: 615px;
     margin: 8px;
     box-shadow: none;
     border: 1px solid #e0e0e0;
