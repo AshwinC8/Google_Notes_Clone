@@ -1,9 +1,8 @@
 # Google_Notes_Clone
 
 ## Demo link:
-Access my site at 
-``` 
-```
+Access to site
+https://ashwinc8.github.io/Google_Notes_Clone/
 
 ## Table of Content:
 - [About The App](#about-the-app)
@@ -22,7 +21,7 @@ A clone of Google keep notes.
 
 
 ## Technologies
-Used the React, and MUI libraries to create the frontend.
+Used the React, and MUI library to create the frontend.
 
 ## Setup
 - To get a local copy of the code, clone it using git :
