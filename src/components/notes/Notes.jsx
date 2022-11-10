@@ -66,6 +66,7 @@ const Notes = () => {
                                                     </Draggable>
                                             ))
                                         }
+                                        {provided.placeholder}
                                     </Grid>
                                     )
                                 }

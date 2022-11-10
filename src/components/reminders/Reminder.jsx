@@ -6,11 +6,11 @@ import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import { DataContext } from '../context/DataProvider';
 
 const StyledCard = styled(Card)`
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    width: 240px;
+    width: 615px;
     margin: 8px;
     box-shadow: none;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
 `
 
 const Reminder = ({ reminder }) => {
