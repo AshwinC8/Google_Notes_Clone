@@ -5,7 +5,7 @@ import * as React from "react";
 const Header = styled(AppBar)`
   z-index: 1201;
   background: #fff;
-  height: 75px;
+  height: 65px;
   box-shadow: inset 0 -1px 0 0 #dadce0;
 `
 
