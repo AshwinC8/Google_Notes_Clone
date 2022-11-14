@@ -1,7 +1,9 @@
-import {Box, ClickAwayListener, styled, TextField} from "@mui/material";
+import {Box, ClickAwayListener, Grid, IconButton, styled, TextField, Tooltip} from "@mui/material";
 import {useState , useRef, useContext} from "react";
 import {DataContext} from "./context/DataProvider.jsx";
 import { v4 as uuid } from "uuid";
+import AddAlertOutlinedIcon from '@mui/icons-material/AddAlertOutlined';
+import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
 
 const Container = styled(Box)`
     display : flex;
@@ -25,7 +27,7 @@ const InputForm = () => {
     const [showTextField, setShowTextField] = useState(false);
 
     const [addNote, setAddNote] = useState({...note, id : uuid()});
-    const {notes, setNotes} = useContext(DataContext);
+    const {notes, setNotes, setReminders} = useContext(DataContext);
 
     const containerRef = useRef();
 
@@ -47,6 +49,12 @@ const InputForm = () => {
     const onTextInput = (e) => {
         let changedNote = { ...addNote, [e.target.name]: e.target.value };
         setAddNote(changedNote);
+    }
+
+    const reminderNote = (note) => {
+        // const updatedNotes = notes.filter(data => data.id !== note.id);
+        // setNotes(updatedNotes);
+        setReminders(prevArr => [note, ...prevArr]);
     }
 
     return (
@@ -73,6 +81,26 @@ const InputForm = () => {
                     name='text'
                     value={addNote.text}
                 />
+                {showTextField &&
+                    <Grid marginRight="auto" marginTop="10px" >
+                        <Tooltip title="Remind me">
+                            <IconButton onClick={() => reminderNote(note)}>
+                                <AddAlertOutlinedIcon
+                                    fontSize="small"
+                                    style={{marginLeft: 'auto'}}
+
+                                />
+                            </IconButton>
+                        </Tooltip>
+                        <Tooltip title="Add Image">
+                            <IconButton >
+                                <AddPhotoAlternateOutlinedIcon
+                                    fontSize="small"
+                                />
+                            </IconButton>
+                        </Tooltip>
+                    </Grid>
+                }
             </Container>
         </ClickAwayListener>
     )

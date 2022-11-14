@@ -1,8 +1,9 @@
 import { useContext } from 'react';
-import { Card, CardContent, CardActions, Typography } from '@mui/material';
+import {Card, CardContent, CardActions, Typography, IconButton, Tooltip} from '@mui/material';
 import { styled } from '@mui/material/styles';
-import NotificationsNoneOutlinedIcon  from '@mui/icons-material/NotificationsNoneOutlined';
+import AddAlertOutlinedIcon from '@mui/icons-material/AddAlertOutlined';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
 import { DataContext } from '../context/DataProvider';
 
 const StyledCard = styled(Card)`
@@ -15,7 +16,7 @@ const StyledCard = styled(Card)`
 
 const Reminder = ({ reminder }) => {
 
-    const { reminders, setNotes, setReminders, setBin } = useContext(DataContext);
+    const { notes, reminders, setNotes, setReminders, setBin } = useContext(DataContext);
 
     const unRemindNote = (reminder) => {
         const updatedNotes = reminders.filter(data => data.id !== reminder.id);
@@ -24,27 +25,42 @@ const Reminder = ({ reminder }) => {
     }
 
     const deleteNote = (reminder) => {
-        const updatedNotes = reminders.filter(data => data.id !== reminder.id);
-        setReminders(updatedNotes);
-        setBin(prevArr => [reminder, ...prevArr]);
+        const updatedNotes = notes.filter(data => data.id !== reminder.id);
+        setNotes(updatedNotes);
+        const updatedReminders = reminders.filter(data => data.id !== reminder.id);
+        setReminders(updatedReminders);
+        setBin(prevArr => [notes, ...prevArr]);
     }
 
     return (
         <StyledCard>
             <CardContent>
-                <Typography style={{fontSize:'1rem', fontWeight:900}}>{reminder.title}</Typography>
-                <Typography style={{fontSize:'15px'}}>{reminder.text}</Typography>
+                <Typography style={{fontSize:'1rem', fontWeight:500}}>{reminder.title}</Typography>
+                <Typography style={{fontSize:'15px', wordWrap: "break-word"}}>{reminder.text}</Typography>
             </CardContent>
             <CardActions>
-                <NotificationsNoneOutlinedIcon
-                    fontSize="small"
-                    style={{ marginLeft: 'auto' }}
-                    onClick={() => unRemindNote(reminder)}
-                />
-                <DeleteOutlinedIcon
-                    fontSize="small"
-                    onClick={() => deleteNote(reminder)}
-                />
+                <Tooltip title="Remind me">
+                    <IconButton onClick={() => unRemindNote(reminder)}>
+                        <AddAlertOutlinedIcon
+                            fontSize="small"
+                            style={{ marginLeft: 'auto' }}
+                        />
+                    </IconButton>
+                </Tooltip>
+                <Tooltip title="Add Image">
+                    <IconButton>
+                        <AddPhotoAlternateOutlinedIcon
+                            fontSize="small"
+                        />
+                    </IconButton>
+                </Tooltip>
+                <Tooltip title="Delete note">
+                    <IconButton onClick={() => deleteNote(reminder)}>
+                        <DeleteOutlinedIcon
+                        fontSize="small"
+                        />
+                    </IconButton>
+                </Tooltip>
             </CardActions>
         </StyledCard>
     )

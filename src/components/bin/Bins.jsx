@@ -1,11 +1,12 @@
 import { useContext } from 'react';
-import { Box, Grid } from '@mui/material';
+import {Box, Grid, Typography} from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { DataContext } from '../context/DataProvider';
 import Bin from './Bin';
 import {DragDropContext, Draggable, Droppable} from "react-beautiful-dnd";
 import {reorder} from "../notes/Notes.jsx";
 import EmptyBin from "./EmptyBin.jsx";
+import BinText from "./BinText.jsx";
 
 const DrawerHeader = styled('div')(({ theme }) => ({
     ...theme.mixins.toolbar,
@@ -27,6 +28,7 @@ const Bins = () => {
         <Box sx={{ display: 'flex', width: '100%' }}>
             <Box sx={{ p: 3, width: '100%' }}>
                 <DrawerHeader />
+                <BinText/>
                     { bin.length!=0 ?
                         <DragDropContext onDragEnd={onDragEnd}>
                             <Droppable droppableId="droppable" >

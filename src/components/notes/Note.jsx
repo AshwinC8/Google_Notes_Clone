@@ -1,9 +1,10 @@
-import {Card, CardActions, CardContent, Typography} from "@mui/material";
+import {Card, CardActions, CardContent, IconButton, ImageList, ImageListItem, Tooltip, Typography} from "@mui/material";
 import { styled } from "@mui/material/styles";
-import NotificationsNoneOutlinedIcon  from '@mui/icons-material/NotificationsNoneOutlined';
+import AddAlertOutlinedIcon from '@mui/icons-material/AddAlertOutlined';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
 import {DataContext} from "../context/DataProvider.jsx";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 
 const StyledCard = styled(Card)`
     width: 615px;
@@ -14,7 +15,13 @@ const StyledCard = styled(Card)`
 `
 
 const Note = ({note}) => {
-    const { notes, setNotes, setReminders, setBin } = useContext(DataContext);
+    const { notes, setNotes, reminders, setReminders, setBin } = useContext(DataContext);
+    const [file, setFile] = useState();
+
+    function handleChange(e) {
+        console.log(e.target.files);
+        setFile(URL.createObjectURL(e.target.files[0]));
+    }
 
     const reminderNote = (note) => {
         const updatedNotes = notes.filter(data => data.id !== note.id);
@@ -25,25 +32,47 @@ const Note = ({note}) => {
     const deleteNote = (note) => {
         const updatedNotes = notes.filter(data => data.id !== note.id);
         setNotes(updatedNotes);
+        const updatedReminders = reminders.filter(data => data.id !== note.id);
+        setReminders(updatedReminders);
         setBin(prevArr => [note, ...prevArr]);
     }
 
     return (
         <StyledCard>
             <CardContent>
-                <Typography style={{fontSize:'1rem', fontWeight:900}}>{note.title}</Typography>
-                <Typography style={{fontSize:'15px'}}>{note.text}</Typography>
+                {file &&
+                    <ImageList sx={{ width: 615, maxHeight: 450}} variant="woven" cols={3} gap={8}>
+                        <ImageListItem>
+                            <img
+                                src={file}
+                            />
+                        </ImageListItem>
+                    </ImageList>
+                }
+                <Typography style={{fontSize:'1rem', fontWeight:500}}>{note.title}</Typography>
+                <Typography style={{fontSize:'15px', wordWrap: "break-word"}}>{note.text}</Typography>
             </CardContent>
             <CardActions>
-                <NotificationsNoneOutlinedIcon
-                    fontSize="small"
-                    style={{ marginLeft: 'auto' }}
-                    onClick={() => reminderNote(note)}
-                />
-                <DeleteOutlinedIcon
-                    fontSize="small"
-                    onClick={() => deleteNote(note)}
-                />
+                <Tooltip title="Remind me">
+                    <IconButton onClick={() => reminderNote(note)}>
+                        <AddAlertOutlinedIcon
+                            fontSize="small"
+                            style={{ marginLeft: 'auto' }}
+                        />
+                    </IconButton>
+                </Tooltip>
+                <Tooltip title="Add Image">
+                    <IconButton aria-label="upload">
+                        <AddPhotoAlternateOutlinedIcon fontSize="small"/>
+                    </IconButton>
+                </Tooltip>
+                <Tooltip title="Delete note">
+                    <IconButton onClick={() => deleteNote(note)}>
+                        <DeleteOutlinedIcon
+                            fontSize="small"
+                        />
+                    </IconButton>
+                </Tooltip>
             </CardActions>
         </StyledCard>
     )

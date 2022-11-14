@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Card, CardContent, CardActions, Typography } from '@mui/material';
+import {Card, CardContent, CardActions, Typography, IconButton, Tooltip} from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { RestoreFromTrashOutlined as Restore, DeleteForeverOutlined as Delete } from '@mui/icons-material';
 import { DataContext } from '../context/DataProvider';
@@ -30,19 +30,26 @@ const Bin = ({ deleteNote }) => {
     return (
         <StyledCard>
             <CardContent>
-                <Typography style={{fontSize:'1rem', fontWeight:900}}>{deleteNote.title}</Typography>
-                <Typography style={{fontSize:'15px'}}>{deleteNote.text}</Typography>
+                <Typography style={{fontSize:'1rem', fontWeight:500}}>{deleteNote.title}</Typography>
+                <Typography style={{fontSize:'15px', wordWrap: "break-word"}}>{deleteNote.text}</Typography>
             </CardContent>
             <CardActions>
-                <Delete
-                    fontSize="small"
-                    style={{ marginLeft: 'auto' }}
-                    onClick={() => removeNote(deleteNote)}
-                />
-                <Restore
-                    fontSize="small"
-                    onClick={() => restoreNote(deleteNote)}
-                />
+                <Tooltip title="Delete Forever">
+                    <IconButton onClick={() => removeNote(deleteNote)}>
+                        <Delete
+                            fontSize="small"
+                        />
+                    </IconButton>
+                </Tooltip>
+                <Tooltip title="Restore">
+                    <IconButton onClick={() => restoreNote(deleteNote)} >
+                        <Restore
+                            fontSize="small"
+                            style={{ marginRight: 'auto'}}
+                            placeholder="Restore"
+                        />
+                    </IconButton>
+                </Tooltip>
             </CardActions>
         </StyledCard>
     )

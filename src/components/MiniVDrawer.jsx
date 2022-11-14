@@ -72,10 +72,7 @@ export default function MiniVDrawer() {
                         <MenuIcon />
                     </IconButton>
                 </DrawerHeader>
-
-                <ListItems
-                />
-
+                <ListItems/>
             </Drawer>
         </Box>
     );

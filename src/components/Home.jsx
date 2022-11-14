@@ -12,6 +12,7 @@ const Home = () => {
             <Router>
                 <MiniVDrawer/>
                 <Routes>
+                    <Route path='/Google_Notes_Clone/' element={<Navigate to="/note" />} />
                     <Route path='/' element={<Navigate to="/note" />} />
                     <Route path='/note' element={<Notes />} />
                     <Route path='/reminder' element={<Reminders />} />
